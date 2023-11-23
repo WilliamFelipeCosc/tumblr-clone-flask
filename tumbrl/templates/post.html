@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class='container my-4'>
+        <form class="d-flex flex-column align-items-center" method='POST'>
+            <p>{{post.post_text}}</p>
+            <img class="rounded my-4" style="width: 420px;" src="{{ url_for('static', filename='fotos_dos_posts/{}'.format(post.post_img)) }}">
+            <div>
+                {{ form.like_btn(class_="btn btn-primary") }}
+                {{ form.dislike_btn(class_="btn btn-tertiary") }}
+            </div>
+            
+        </form>
+    </div>
+{% endblock%}

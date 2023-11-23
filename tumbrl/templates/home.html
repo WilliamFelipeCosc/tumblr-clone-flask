@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block titulo %} Homepage {% endblock %}
+
+{% block body %}
+    <section class='container'>
+        {% block formulario %}
+        <div class="card text-center mt-4 bg-body-tertiary">
+            <div class="card-header">
+                <h3>Login</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" class="w-50 mx-auto">
+                    {{ form.csrf_token }}
+
+                    <div class="my-4">
+                        {{ form.email.label(class_="form-label") }}
+                        {{ form.email(class_="form-control") }}
+                    </div>
+                    
+                    <div class="my-4">
+                        {{ form.password.label(class_="form-label") }}
+                        {{ form.password(class_="form-control") }}
+                    </div>
+
+                    {{ form.btn(class_="btn btn-primary") }}
+                </form>
+
+                <br>
+                <a href=" {{ url_for('createAccount') }} ">New User?</a><br><br>
+            </div>
+        </div>
+        {% endblock %}
+    </section>
+{% endblock %}

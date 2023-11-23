@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<form method="POST" >
+    <div class='container w-50 mt-4 mx-auto border rounded text-center py-4 bg-light-subtle'>
+        <h3>Register</h3>
+        {{ form.csrf_token }}
+        <div class="my-4">
+            {{ form.email.label(class_="form-label") }}
+            {{ form.email(class_="form-control") }}
+        </div>
+        <div class="my-4">
+            {{ form.username.label(class_="form-label") }}
+            {{ form.username(class_="form-control") }}
+        </div>
+        <div class="my-4">
+            {{ form.password.label(class_="form-label") }}
+            {{ form.password(class_="form-control") }}
+        </div>
+        <div class="my-4">
+            {{ form.checkPassword.label(class_="form-label") }}
+            {{ form.checkPassword(class_="form-control") }}
+        </div>
+        {{ form.btn(class_="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}

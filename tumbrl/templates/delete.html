@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}  Deletar {{ user.username }} {% endblock %}
+
+{% block body %}
+<div class="container text-center my-4">
+    <h1 class="mb-4"> Deletar {{ user.username }}!  -  {{ mesa }} </h1>
+
+    <a class="d-block btn btn-primary" href=" {{ url_for('homepage') }} "> HOME </a><br><br>
+    <form method="POST">
+        {{ form.btn(class_="btn btn-tertiary") }}
+    </form>
+</div>
+{% endblock %}

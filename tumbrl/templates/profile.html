@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block titulo %}  Perfil do {{ user.username }} {% endblock %}
+
+{% block body %}
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-3 bg-body-tertiary py-4 h-100">
+                <h1> {{ user.username }} </h1>
+
+                {% if form %}
+
+                    <h4>Criar novo post</h4>
+                    <form method="POST" enctype="multipart/form-data" class='create-post'>
+                        {{ form.csrf_token }}
+
+                        {{ form.text.label(class_="form-label mt-3") }}<br>
+                        {{ form.text(class_="form-control") }}<br><br>
+
+                        {{ form.photo.label(class_="form-label mt-3") }}<br>
+                        {{ form.photo(class_="form-control") }}<br><br>
+
+                        {{ form.btn(class_="btn btn-primary") }}
+                    </form>
+                {% endif %}
+                <a class="d-block mt-4" href=" {{ url_for('deleteAccount', user_id=user.id) }} "> Delete account </a>
+            </div>
+            <div class="col-9 mt-4">
+                <h2> Meu feed </h2>
+                <div class="row px-4">
+                    {% for post in user.posts %}
+                        <div class="card col-4 px-0">
+                            <a href=" {{ url_for('post', post_id=post.id) }} ">
+                                <img class="card-img-top w-full" src="{{ url_for('static', filename='fotos_dos_posts/{}'.format(post.post_img)) }}">
+                            </a>
+                            <div class="card-body">
+                                <p>{{post.post_text}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
